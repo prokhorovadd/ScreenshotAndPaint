@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onKeyPressed="#onKeyPressed"  style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.screenshotandpaint.HelloController">
+    <children>
+        <HBox>
+            <children>
+                <MenuBar fx:id="menubar" prefHeight="20.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;">
+                    <menus>
+                        <Menu fx:id="menu" mnemonicParsing="false" text="Menu">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#openImage" text="Open" />
+                                <MenuItem mnemonicParsing="false" onAction="#saveImage" text="Save" />
+                                <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close app" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </HBox>
+        <VBox prefHeight="500.0" prefWidth="50.0" AnchorPane.topAnchor="50.0">
+            <children>
+                <Slider fx:id="brushSizeSlider" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="1" orientation="VERTICAL" prefHeight="200.0" prefWidth="50.0" showTickLabels="true">
+                    <VBox.margin>
+                        <Insets bottom="20.0" top="120.0" />
+                    </VBox.margin>
+                    <tooltip>
+                        <Tooltip text="Select brush size" />
+                    </tooltip>
+                </Slider>
+                <ColorPicker fx:id="brushColorPicker" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #E2E2E2; -fx-border-radius: 3px; -fx-border-width: 0.5px;">
+                    <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </VBox.margin>
+                    <value>
+                        <Color />
+                    </value>
+                </ColorPicker>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </VBox>
+        <ScrollPane fx:id="scrollView" prefHeight="488.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0">
+            <content>
+                <StackPane  style="-fx-border-color: #E2E2E2; -fx-border-radius: 3px; -fx-border-width: 0.5px;">
+                    <children>
+                        <Canvas fx:id="imgCanvas" height="600.0" width="1200.0" />
+                        <Canvas fx:id="drawCanvas" height="600.0" width="1200.0" />
+                        <Canvas fx:id="cropCanvas" disable="true" height="600.0" opacity="0.0" width="1200.0" />
+                    </children>
+                </StackPane>
+            </content>
+        </ScrollPane>
+        <HBox fillHeight="false" prefHeight="58.0" prefWidth="900.0" AnchorPane.topAnchor="15.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Button fx:id="takeScreenshotBtn" mnemonicParsing="false" onAction="#screenshotButtonPressed" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #f78539;" text="Take a screenshot" textAlignment="CENTER" textFill="#FFFFFF">
+                    <HBox.margin>
+                        <Insets top="10.0" left="60" />
+                    </HBox.margin>
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Slider fx:id="pingSlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefHeight="30.0" prefWidth="226.0" showTickLabels="true">
+                    <HBox.margin>
+                        <Insets left="74.0" right="74.0" top="11.0" />
+                    </HBox.margin>
+                    <tooltip>
+                        <Tooltip text="Select a screen capture ping" />
+                    </tooltip>
+                </Slider>
+                <CheckBox fx:id="hideAppCheckbox" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="Minimize " textFill="#f78539">
+                    <HBox.margin>
+                        <Insets right="30"  top="11.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="System Bold" size="11.0" />
+                    </font>
+                </CheckBox>
+                <Button fx:id="cropImgBtn" mnemonicParsing="false" onAction="#cutButtonPressed" prefHeight="25.0" prefWidth="90.0" style="-fx-border-color: #f78539; -fx-background-color: disable; -fx-border-radius: 3px; -fx-border-width: 1px;" text="Crop image" textFill="#f78539">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" top="12.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

@@ -1,5 +1,2 @@
-# Object file
-*.o
-
-# Ada Library Information
-*.ali
+# Project exclude paths
+/target/
